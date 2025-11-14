@@ -2,59 +2,353 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To My Beloved Wife Parnika</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #fce4ec;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
-        h1 {
-            color: #c2185b;
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero section */
+        .hero {
             text-align: center;
-            margin-top: 50px;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
         }
-        #poem {
-            margin-top: 30px;
-            margin-bottom: 30px;
-            text-align: center;
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        #letter {
-            margin-top: 50px;
-            margin-bottom: 50px;
-            text-align: center;
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
         }
-        #signature {
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
             font-style: italic;
-            margin-top: 20px;
+        }
+
+        /* Heart animation */
+        .heart-container {
+            text-align: center;
+            margin: 40px 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .heart {
+            display: inline-block;
+            font-size: 4rem;
+            color: #ff6b9d;
+            filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.6));
+        }
+
+        /* Card styling */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Poem section */
+        .poem {
+            text-align: center;
+            line-height: 2;
+            color: #333;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .poem p {
+            margin-bottom: 0;
+        }
+
+        .poem-line {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .poem-line:nth-child(1) { animation-delay: 0.1s; }
+        .poem-line:nth-child(2) { animation-delay: 0.2s; }
+        .poem-line:nth-child(3) { animation-delay: 0.3s; }
+        .poem-line:nth-child(4) { animation-delay: 0.4s; }
+        .poem-line:nth-child(5) { animation-delay: 0.5s; }
+        .poem-line:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Letter section */
+        .letter {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .letter-greeting {
+            font-size: 1.3rem;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .letter p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .signature {
             text-align: right;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #764ba2;
+            margin-top: 40px;
+            font-weight: bold;
+        }
+
+        /* Decorative divider */
+        .divider {
+            text-align: center;
+            margin: 50px 0;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 30px 20px;
+            }
+
+            .poem, .letter {
+                font-size: 1rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Scroll animation */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <h1>To My Beloved Wife Parnika</h1>
-    <div id="poem">
-        <p>You light up my world with your smile,<br>
-        Your laughter fills my heart with joy.<br>
-        Your touch makes everything worthwhile,<br>
-        My love for you nothing can destroy.<br>
-        You are the sunshine on my darkest day,<br>
-        The rainbow after a stormy night.<br>
-        You chase my fears and worries away,<br>
-        With you, everything just feels right.<br>
-        I thank God every day for you,<br>
-        And for the love we share so true.<br>
-        You are my life, my world, my all,<br>
-        And forever, I will catch your fall.<br>
-        </p>
+    <!-- Animated particles background -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>To My Beloved Wife</h1>
+            <div class="subtitle">Parnika</div>
+        </div>
+
+        <!-- Heart Animation -->
+        <div class="heart-container">
+            <div class="heart">❤️</div>
+        </div>
+
+        <!-- Poem Card -->
+        <div class="card scroll-fade">
+            <div class="poem">
+                <div class="poem-line">You light up my world with your smile,</div>
+                <div class="poem-line">Your laughter fills my heart with joy.</div>
+                <div class="poem-line">Your touch makes everything worthwhile,</div>
+                <div class="poem-line">My love for you nothing can destroy.</div>
+                <div class="poem-line"><br></div>
+                <div class="poem-line">You are the sunshine on my darkest day,</div>
+                <div class="poem-line">The rainbow after a stormy night.</div>
+                <div class="poem-line">You chase my fears and worries away,</div>
+                <div class="poem-line">With you, everything just feels right.</div>
+                <div class="poem-line"><br></div>
+                <div class="poem-line">I thank God every day for you,</div>
+                <div class="poem-line">And for the love we share so true.</div>
+                <div class="poem-line">You are my life, my world, my all,</div>
+                <div class="poem-line">And forever, I will catch your fall.</div>
+            </div>
+        </div>
+
+        <!-- Decorative Divider -->
+        <div class="divider">✨ ✨ ✨</div>
+
+        <!-- Letter Card -->
+        <div class="card scroll-fade">
+            <div class="letter">
+                <div class="letter-greeting">My dearest wife Parnika,</div>
+                
+                <p>As I sit down to write this letter, I realize how much you mean to me. You are the most important person in my life, and I cannot imagine living without you. Your presence in my life has brought me joy, happiness, and purpose. Your love has given me strength and courage to face the challenges that come my way.</p>
+
+                <p>When I first met you, I knew that there was something special about you. Your smile, your kindness, and your beauty captured my heart from the very beginning. As we got to know each other, I discovered more and more reasons to love you. You are intelligent, thoughtful, and compassionate. You make me a better person, and for that, I am forever grateful.</p>
+
+                <p>Through the ups and downs of life, we have been there for each other. Your unwavering support and understanding have helped me through difficult times. You have been my rock, my confidante, and my best friend. I feel blessed to have you by my side, and I will always cherish the memories we have created together.</p>
+
+                <p>I want you to know that I love you more than words can express. I promise to always be there for you, to support you, and to love you with all my heart. You are the one I want to spend the rest of my life with, and I cannot imagine a future without you in it.</p>
+
+                <p><strong>Forever yours,</strong></p>
+                <div class="signature">Your Loving Husband<br>Sachin Kumar P</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Made with ❤️ for Parnika</p>
+            <p>© 2024 Sachin Kumar P</p>
+        </div>
     </div>
-    <div id="letter">
-        <p>My dearest wife Parnika,</p>
-        <p>As I sit down to write this letter, I realize how much you mean to me. You are the most important person in my life, and I cannot imagine living without you. Your presence in my life has brought me joy, happiness, and purpose. Your love has given me strength and courage to face the challenges that come my way.</p>
-        <p>When I first met you, I knew that there was something special about you. Your smile, your kindness, and your beauty captured my heart from the very beginning. As we got to know each other, I discovered more and more reasons to love you. You are intelligent, thoughtful, and compassionate. You make me a better person, and for that, I am forever grateful.</p>
-        <p>Through the ups and downs of life, we have been there for each other. Your unwavering support and understanding have helped me through difficult times. You have been my rock, my confidante, and my best friend. I feel blessed to have you by my side, and I will always cherish the memories we have created together.</p>
-        <p>I want you to know that I love you more than words can express. I promise to always be there for you, to support you, and to love you with all my heart. You are the one I want to spend the rest of my life with, and I cannot imagine a future without you in it.</p>
-        <p>Forever yours,</p>
-        <p id="signature">Your Loving Husband Sachin Kumar P</p>
-    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
